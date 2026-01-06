@@ -1,0 +1,16 @@
+Nom_utilisateur,Email,Statut_MFA,Date_activation_MFA,Type_MFA,Compte_admin
+Marie Dubois,marie.dubois@santeplus.fr,Active,2025-10-15,Application Authenticator,Non
+Sophie Martin,sophie.martin@santeplus.fr,Non active,,,Non
+Dr Jean Bernard,jean.bernard@santeplus.fr,Non active,,,Non
+Dr Claire Moreau,claire.moreau@santeplus.fr,Active,2025-11-02,Application Authenticator,Non
+Thomas Leroy,thomas.leroy@santeplus.fr,Non active,,,Non
+Dr Pierre Durand,pierre.durand@santeplus.fr,Non active,,,Non
+Admin IT Prestataire,admin.it@santeplus.fr,Active,2025-09-20,Application Authenticator,Oui
+Admin Direction,admin.direction@santeplus.fr,Active,2025-09-20,Application Authenticator,Oui
+Admin Clinique,admin.clinique@santeplus.fr,Active,2025-09-20,Application Authenticator,Oui
+Julie Petit,julie.petit@santeplus.fr,Non active,,,Non
+Marc Lefebvre,marc.lefebvre@santeplus.fr,Non active,,,Non
+Isabelle Roux,isabelle.roux@santeplus.fr,Active,2025-10-28,SMS,Non
+Nicolas Blanc,nicolas.blanc@santeplus.fr,Non active,,,Non
+Camille Girard,camille.girard@santeplus.fr,Non active,,,Non
+Laure Vincent,laure.vincent@santeplus.fr,Non active,,,Non

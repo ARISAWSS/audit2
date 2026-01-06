@@ -20,66 +20,17 @@
 
 ## 1. Résumé exécutif
 
-### 1.1 Objectif de l'audit
+Le présent rapport synthétise les résultats de l'audit de sécurité des systèmes d'information (SSI) mené auprès de la **Clinique Santé Plus** du 1er décembre 2025 au 5 janvier 2026. L'objectif principal de cette mission était d'évaluer le niveau de sécurité du système d'information, d'identifier les risques majeurs et de proposer des recommandations concrètes et adaptées à la taille et aux moyens de la clinique.
 
-La présente mission d'audit SSI a été réalisée pour la **Clinique Santé Plus** du **1er décembre 2025 au 5 janvier 2026**, dans le cadre du module "Audit et gestion des risques — Normes ISO" de l'Efrei Paris.
+La Clinique Santé Plus, en tant qu'établissement de santé de petite taille, manipule quotidiennement des données sensibles soumises au RGPD et aux exigences d'hébergement de données de santé (HDS). Le contexte actuel, marqué par une recrudescence des cyberattaques ciblant le secteur de la santé, rend cette évaluation d'autant plus cruciale.
 
-L'objectif était d'évaluer le niveau de sécurité du système d'information, de vérifier l'application des bonnes pratiques et exigences réglementaires (ISO/IEC 27001/27002, RGPD, HDS), et d'identifier les principaux risques affectant la confidentialité, l'intégrité et la disponibilité des données de santé.
+Notre audit, réalisé selon une approche non intrusive et basée sur les référentiels ISO 27001/27002, RGPD et les guides de l'ANSSI, a permis d'identifier **7 constats majeurs**, dont **4 sont classés comme critiques (P1)** et **3 comme importants (P2)**. Ces constats révèlent des vulnérabilités significatives, notamment en matière d'authentification multifacteur (MFA), de stratégie de sauvegarde, de gestion des correctifs de sécurité et de procédure de gestion des incidents.
 
-### 1.2 Périmètre audité
+Les risques associés à ces constats sont principalement liés à la **compromission des comptes utilisateurs**, à la **perte définitive de données critiques**, à l'**exploitation de vulnérabilités connues** et à l'**incapacité à gérer efficacement un incident majeur**. Ces risques pourraient entraîner des impacts très élevés sur la confidentialité, l'intégrité et la disponibilité des données patients et des services de la clinique, avec des conséquences financières, réglementaires et réputationnelles importantes.
 
-- **Organisation** : Clinique Santé Plus (≈ 15 employés, 50 patients/jour)
-- **Systèmes** : Postes Windows, réseau interne/Wi‑Fi, application MedSimple (SaaS), Microsoft 365
-- **Processus** : Gestion des accès, sauvegardes, incidents, conformité RGPD/HDS
-- **Exclusions** : Tests d'intrusion, audits physiques des locaux, systèmes externes non maîtrisés
+Un **plan d'actions priorisé** est proposé, détaillant des mesures concrètes, des responsabilités claires et des échéances réalistes. La mise en œuvre rapide de ces recommandations, notamment celles classées P1, est essentielle pour renforcer la posture de sécurité de la clinique et réduire son exposition aux cybermenaces.
 
-### 1.3 Méthodologie
-
-L'audit a été conduit selon une approche **non intrusive** (lecture seule, observations, entretiens, revue documentaire), alignée sur les référentiels **ISO/IEC 27001/27002**, **ANSSI**, et **RGPD**.
-
-**Phases** :
-- **Semaine 1** : Cadrage (lettre de mission, note de cadrage)
-- **Semaines 2-3** : Travaux de terrain (20 contrôles, 30 preuves collectées)
-- **Fin semaine 3** : Analyse des risques et formulation des constats
-- **Semaine 4** : Rédaction du rapport et restitution orale
-
-### 1.4 Synthèse des résultats
-
-**7 constats** ont été identifiés, répartis comme suit :
-
-| Criticité | Nombre | Constats |
-|---|---|---|
-| **Très élevée** | 2 | C-002 (Sauvegardes), C-005 (Incidents) |
-| **Élevée** | 2 | C-001 (MFA), C-003 (Correctifs) |
-| **Moyenne** | 3 | C-004 (Wi‑Fi invité), C-006 (RGPD), C-007 (Verrouillage) |
-
-**Points positifs identifiés** :
-- MFA activée pour les comptes administrateurs
-- Stratégie de sauvegarde partiellement en place (quotidienne + hors site)
-- Procédure d'incidents existante (à compléter)
-- Attestation HDS pour l'hébergeur MedSimple
-- Antivirus/EDR déployé sur 100% des postes
-
-**Risques majeurs** :
-- **Absence de MFA obligatoire** pour tous les comptes (risque phishing)
-- **Stratégie de sauvegarde incomplète** et tests de restauration non réguliers
-- **Retard dans l'application des correctifs** de sécurité
-- **Procédure d'incidents incomplète** (délais RGPD, kit de crise)
-
-### 1.5 Plan d'actions priorisé
-
-**4 actions critiques (P1)** à traiter avant le **28 février 2026** :
-1. Implémenter MFA obligatoire (échéance : 31/01/2026)
-2. Compléter stratégie sauvegarde + tests trimestriels (échéance : 28/02/2026)
-3. Mettre en place politique correctifs (échéance : 15/02/2026)
-4. Compléter procédure incidents + kit de crise (échéance : 15/02/2026)
-
-**3 actions importantes (P2)** à traiter avant le **28 février 2026** :
-5. Renforcer isolation Wi‑Fi invité (échéance : 31/01/2026)
-6. Compléter clauses RGPD dans contrats (échéance : 28/02/2026)
-7. Implémenter politique verrouillage session (échéance : 31/01/2026)
-
-**Coût total estimé** : 0€ à 1000€ (principalement configuration et rédaction interne)
+Nous remercions la Direction et le personnel de la Clinique Santé Plus pour leur collaboration et leur transparence tout au long de cette mission.
 
 ---
 
@@ -87,33 +38,19 @@ L'audit a été conduit selon une approche **non intrusive** (lecture seule, obs
 
 ### 2.1 Présentation de l'organisation
 
-La **Clinique Santé Plus** est une clinique médicale de petite taille (≈ 15 employés) assurant des soins médicaux généraux et des analyses biologiques. Elle gère quotidiennement des **données de santé sensibles** (dossiers patients, informations administratives) soumises au **RGPD** et à l'**Hébergement de Données de Santé (HDS)**.
+La **Clinique Santé Plus** est une clinique médicale de petite taille (environ 15 employés) qui assure des soins médicaux généraux et des analyses biologiques. Elle gère quotidiennement des **données de santé sensibles** (dossiers patients, informations administratives) soumises au **RGPD** et aux exigences d'**Hébergement de Données de Santé (HDS)**.
 
-**Contexte réglementaire** :
-- **RGPD** : Obligations de sécurité (art. 32), notification violations (art. 33-34), registre traitements (art. 30)
-- **HDS** : Hébergement des données de santé par un prestataire certifié HDS
-- **Secteur santé** : Cible privilégiée des cyberattaques (ransomwares, fuites de données)
+Le contexte réglementaire est marqué par le **RGPD**, qui impose des obligations strictes en matière de sécurité (art. 32), de notification des violations (art. 33-34) et de tenue d'un registre des traitements (art. 30). L'hébergement des données de santé par un prestataire certifié HDS est également une exigence clé. Le secteur de la santé est par ailleurs une cible privilégiée des cyberattaques, notamment les ransomwares et les fuites de données, ce qui souligne l'importance cruciale de cet audit.
 
 ### 2.2 Périmètre de l'audit
 
-**Inclus** :
-- **Systèmes** : 8 postes Windows 11 Pro, réseau interne/Wi‑Fi, application SaaS MedSimple, Microsoft 365
-- **Processus** : Gestion des accès (M365, MedSimple), sauvegardes, gestion des incidents, conformité RGPD/HDS
-- **Organisation** : Direction, IT (prestataire), utilisateurs métiers
+L'audit a porté sur les éléments suivants. Les systèmes informatiques incluent huit postes de travail sous Windows 11 Pro, le réseau interne (filaire et Wi‑Fi), l'application SaaS de gestion des patients "MedSimple", et l'environnement Microsoft 365 (messagerie, stockage de documents). Les processus examinés concernent la gestion des accès (pour M365 et MedSimple), les procédures de sauvegarde et de restauration, la gestion des incidents de sécurité, et la conformité aux exigences du RGPD et de l'HDS. L'organisation a également été analysée, notamment les rôles et responsabilités de la Direction, du prestataire IT externe, et des utilisateurs métiers.
 
-**Exclus** :
-- Tests d'intrusion
-- Audits physiques des locaux
-- Systèmes externes non maîtrisés par la clinique
-- Tests de charge/performance
+Les éléments suivants ont été explicitement exclus du périmètre de l'audit. Les tests d'intrusion et toute forme d'action intrusive (exploitation de vulnérabilités, déni de service, etc.) n'ont pas été réalisés. Les audits physiques détaillés des locaux (contrôle d'accès physique, vidéosurveillance, etc.) ont également été exclus. Enfin, les systèmes externes non directement maîtrisés par la clinique, au-delà des interfaces visibles et des exigences contractuelles ou documentaires disponibles, n'ont pas fait l'objet d'une analyse approfondie.
 
 ### 2.3 Référentiels utilisés
 
-- **ISO/IEC 27001:2022** : Cadre de management de la SSI (clauses 4-10)
-- **ISO/IEC 27002:2022** : Bonnes pratiques de sécurité (contrôles sélectionnés)
-- **RGPD** : Règlement Général sur la Protection des Données (articles 28, 30, 32, 33, 34)
-- **ANSSI** : Recommandations hygiène informatique, guides sectoriels
-- **HDS** : Référentiel Hébergement de Données de Santé (attestation prestataire)
+L'audit s'est appuyé sur les référentiels suivants. La norme **ISO/IEC 27001:2022** a servi de cadre pour le management de la sécurité de l'information (clauses 4 à 10). La norme **ISO/IEC 27002:2022** a fourni les bonnes pratiques de sécurité, avec une sélection de contrôles pertinents pour une petite structure. Le **RGPD** (Règlement Général sur la Protection des Données) a été utilisé pour vérifier la conformité réglementaire, notamment les articles 28, 30, 32, 33 et 34. Les recommandations de l'**ANSSI** (Agence Nationale de la Sécurité des Systèmes d'Information), notamment les guides sur l'hygiène informatique, ont également été consultées. Enfin, le référentiel **HDS** (Hébergement de Données de Santé) a été vérifié via l'attestation du prestataire.
 
 ---
 
@@ -121,38 +58,23 @@ La **Clinique Santé Plus** est une clinique médicale de petite taille (≈ 15 
 
 ### 3.1 Approche d'audit
 
-L'audit a été conduit selon une approche **non intrusive** et **factuelle**, alignée sur les principes ISO 19011 (lignes directrices pour l'audit).
+L'audit a été mené selon une approche **non intrusive** et **factuelle**, en conformité avec les principes de la norme ISO 19011 (lignes directrices pour l'audit des systèmes de management).
 
-**Principes** :
-- **Indépendance** : Équipe externe (étudiants Efrei Paris)
-- **Objectivité** : Constats basés sur des preuves (30 preuves collectées)
-- **Confidentialité** : Toutes les données sensibles ont été anonymisées
-- **Non-intrusion** : Aucune action intrusive (pas de scans agressifs, pas d'exploitation)
+Les principes fondamentaux de notre démarche ont été l'indépendance, l'objectivité, la confidentialité et la non-intrusion. L'équipe d'audit est externe à la clinique (étudiants de l'Efrei Paris), garantissant une évaluation impartiale. Tous les constats formulés sont basés sur des preuves tangibles et vérifiables, avec un total de 30 preuves collectées. Toutes les informations sensibles collectées ont été traitées de manière confidentielle et anonymisées dans les livrables. Enfin, aucune action intrusive n'a été réalisée. Les vérifications techniques se sont limitées à des observations, des revues de configuration en lecture seule et des exports de rapports.
 
 ### 3.2 Techniques d'audit utilisées
 
-1. **Revue documentaire** : Politiques, procédures, contrats, DPA, attestations
-2. **Entretiens** : Direction, référent SI, prestataire IT, utilisateurs métiers
-3. **Observations techniques** : Configuration postes, réseau, consoles (lecture seule)
-4. **Exports/rapports** : M365, MedSimple, EDR, sauvegardes (anonymisés)
-5. **Exercice table-top** : Scénario ransomware (30 min)
+Pour collecter les informations nécessaires, nous avons utilisé une combinaison de techniques. La revue documentaire a consisté en l'examen des politiques de sécurité, procédures internes, inventaires d'actifs, contrats avec les prestataires, accords de traitement de données (DPA) et attestations HDS. Les entretiens ont permis des discussions avec la Direction, le référent SI de la clinique, le prestataire IT externe, et des utilisateurs métiers pour comprendre les processus et les pratiques. Les observations techniques ont permis la vérification des configurations sur les postes de travail, le réseau, et les consoles d'administration (M365, MedSimple, EDR, sauvegardes) en mode lecture seule. Les exports et rapports ont fourni des données issues des systèmes d'information (listes d'utilisateurs, statuts MFA, logs de connexion, rapports de couverture EDR, logs de sauvegarde), toutes anonymisées. Enfin, un exercice table-top a été réalisé, simulant un scénario de crise (ransomware) avec les équipes clés pour évaluer la réactivité et la pertinence des procédures existantes.
 
 ### 3.3 Échantillonnage
 
-- **Postes** : 3 postes échantillons (accueil, médecin, direction) sur 8
-- **Comptes** : 6 comptes M365 (3 récents, 3 anciens) sur 15
-- **Profils applicatifs** : 3 profils MedSimple (accueil, médecin, admin) sur 5
-- **Contrats** : 2-3 contrats prestataires (IT, hébergeur MedSimple)
+Afin d'obtenir une vision représentative sans être exhaustive, un échantillonnage a été effectué. Trois postes de travail ont été observés sur un total de huit (un poste d'accueil, un poste de médecin, un poste de direction). Six comptes Microsoft 365 ont été examinés (trois créés récemment, trois plus anciens) sur un total d'environ quinze. Trois profils de l'application MedSimple ont été analysés (accueil, médecin, administrateur) sur un total de cinq. Enfin, deux à trois contrats avec les prestataires clés (IT, hébergeur MedSimple) ont été revus.
 
 ### 3.4 Preuves collectées
 
-**30 preuves** ont été collectées et référencées dans le registre de preuves (`05_registre_preuves.csv`), réparties comme suit :
-- **Documents** : 12 (politiques, procédures, contrats, DPA)
-- **Exports** : 10 (M365, MedSimple, EDR, sauvegardes)
-- **Captures** : 6 (configurations, paramètres, logs)
-- **Observations** : 2 (postes, test restauration)
+Au total, **30 preuves** ont été collectées et sont référencées de manière détaillée dans le registre de preuves (`05_registre_preuves.csv`). Ces preuves se répartissent comme suit : douze documents (politiques, procédures, contrats, DPA), dix exports de données (M365, MedSimple, EDR, sauvegardes), six captures d'écran (configurations, paramètres, logs), et deux observations directes (postes, test de restauration).
 
-Toutes les preuves ont été **anonymisées** (identifiants, données patients, adresses IP).
+Il est important de souligner que toutes les preuves contenant des informations sensibles (identifiants, données patients, adresses IP) ont été **anonymisées** pour garantir la confidentialité.
 
 ---
 
@@ -160,218 +82,83 @@ Toutes les preuves ont été **anonymisées** (identifiants, données patients, 
 
 ### 4.1 Méthode d'évaluation
 
-Les risques ont été évalués selon une **matrice de criticité** combinant :
-- **Impact** : Faible / Moyen / Élevé / Très élevé
-- **Probabilité** : Faible / Moyenne / Élevée
-- **Criticité** : Impact × Probabilité
+Les risques identifiés ont été évalués en utilisant une **matrice de criticité** standard, qui combine deux facteurs principaux. L'impact correspond à l'ampleur des conséquences négatives si le risque se matérialise, évalué comme Faible, Moyen, Élevé ou Très élevé. La probabilité correspond à la vraisemblance que le risque se produise, évaluée comme Faible, Moyenne ou Élevée. La **Criticité** du risque est ensuite déterminée par la combinaison de l'Impact et de la Probabilité, permettant de prioriser les actions correctives.
 
 ### 4.2 Cartographie des risques
+
+Le tableau ci-dessous présente la cartographie des risques identifiés, associés aux constats correspondants :
 
 | ID | Risque | Impact | Probabilité | Criticité | Constat associé |
 |---|---|---|---|---|---|
 | **R-001** | Compromission comptes utilisateurs (phishing) | Élevé | Moyenne | **Élevée** | C-001 |
 | **R-002** | Perte définitive données critiques (ransomware/panne) | Très élevé | Moyenne | **Très élevée** | C-002 |
-| **R-003** | Exploitation vulnérabilités non corrigées | Élevé | Moyenne | **Élevée** | C-003 |
-| **R-004** | Accès non autorisé depuis Wi‑Fi invité | Moyen | Faible à Moyenne | **Moyenne** | C-004 |
-| **R-005** | Réaction inadaptée incident majeur | Très élevé | Moyenne | **Très élevée** | C-005 |
-| **R-006** | Non-conformité RGPD (contrats) | Élevé | Faible à Moyenne | **Moyenne** | C-006 |
-| **R-007** | Accès non autorisé postes sans surveillance | Moyen | Faible | **Moyenne** | C-007 |
+| **R-003** | Exploitation de vulnérabilités connues (malware) | Élevé | Moyenne | **Élevée** | C-003 |
+| **R-004** | Accès non autorisé au réseau interne (Wi‑Fi invité) | Moyen | Moyenne | **Moyenne** | C-004 |
+| **R-005** | Incapacité à gérer incident majeur (ransomware) | Très élevé | Moyenne | **Très élevée** | C-005 |
+| **R-006** | Non-conformité RGPD (sous-traitants) | Moyen | Faible | **Moyenne** | C-006 |
+| **R-007** | Accès non autorisé aux postes sans surveillance | Moyen | Faible | **Moyenne** | C-007 |
 
-### 4.3 Top 3 des risques critiques
+### 4.3 Analyse des risques critiques
 
-#### R-002 : Perte définitive de données critiques
-- **Scénario** : Ransomware chiffre postes + NAS local. Restauration depuis copie hors site échoue (non testée). Données perdues définitivement.
-- **Impact** : Perte dossiers patients, interruption soins, non-conformité RGPD/HDS, arrêt d'activité
-- **Mesures existantes** : Sauvegardes quotidiennes M365, hebdomadaires NAS, copie hors site
-- **Mesures recommandées** : Tests restauration trimestriels, vérification chiffrement offsite, export MedSimple
+Le risque le plus critique identifié concerne la **perte définitive de données critiques** (R-002). Le scénario envisagé serait qu'un ransomware chiffre les postes et le NAS local. La restauration depuis la copie hors site n'aurait pas été testée récemment et échouerait, entraînant une perte définitive des données. L'impact serait très élevé, incluant la perte de dossiers patients, l'interruption des soins, la non-conformité RGPD/HDS, et potentiellement l'arrêt d'activité. Les mesures existantes incluent des sauvegardes quotidiennes M365, hebdomadaires vers le NAS, et une copie hors site. Les mesures recommandées consistent à mettre en place des tests de restauration trimestriels, vérifier le chiffrement de la copie hors site, et ajouter un export dédié de MedSimple.
 
-#### R-005 : Réaction inadaptée incident majeur
-- **Scénario** : Ransomware chiffre systèmes. Équipe ne sait pas qui contacter, ne respecte pas délai CNIL (72h), communique mal aux patients.
-- **Impact** : Violation RGPD, sanctions CNIL, perte confiance patients, interruption activité
-- **Mesures existantes** : Procédure incidents (incomplète), exercice table-top réalisé
-- **Mesures recommandées** : Compléter procédure (délais, RACI), créer kit de crise, exercices trimestriels
+Le deuxième risque critique concerne l'**incapacité à gérer efficacement un incident majeur** (R-005). Le scénario serait qu'un ransomware chiffre les systèmes de la clinique. L'équipe ne saurait pas qui contacter en priorité, ne respecterait pas le délai de notification à la CNIL (72 heures), et communiquerait mal aux patients. L'impact serait très élevé, avec violation du RGPD, sanctions potentielles de la CNIL, perte de confiance des patients, et interruption prolongée de l'activité. Les mesures existantes incluent une procédure d'incidents existante mais incomplète, et un exercice table-top qui a révélé des lacunes. Les mesures recommandées consistent à compléter la procédure avec des délais clairs, un RACI détaillé, créer un kit de crise, et organiser des exercices trimestriels.
 
-#### R-001 : Compromission comptes utilisateurs
-- **Scénario** : Attaquant obtient identifiants via phishing. Sans MFA, accès immédiat au compte, exfiltration données patients.
-- **Impact** : Accès non autorisé données santé, violation RGPD, interruption activité
-- **Mesures existantes** : MFA activée pour admins (40% utilisateurs)
-- **Mesures recommandées** : MFA obligatoire 100% comptes, politique Conditional Access
-
-### 4.4 Risques résiduels acceptables
-
-Après mise en œuvre des recommandations, les risques suivants resteront à un niveau **acceptable** (surveillance continue) :
-- **R-004** : Accès non autorisé Wi‑Fi invité (isolation renforcée, probabilité réduite)
-- **R-006** : Non-conformité RGPD (contrats complétés, risque réduit)
-- **R-007** : Accès non autorisé postes (verrouillage 5 min, probabilité réduite)
+Le troisième risque majeur concerne la **compromission des comptes utilisateurs** (R-001). Le scénario serait qu'un attaquant obtienne les identifiants d'un utilisateur via un email de phishing. Sans MFA, l'accès au compte serait immédiat, permettant l'exfiltration de données patients ou l'accès à MedSimple. L'impact serait élevé, avec accès non autorisé aux données de santé, violation du RGPD, et interruption d'activité. Les mesures existantes montrent que la MFA est activée pour les administrateurs mais seulement pour 40% des utilisateurs. Les mesures recommandées consistent à implémenter une politique de Conditional Access imposant la MFA obligatoire pour 100% des comptes.
 
 ---
 
 ## 5. Constats détaillés
 
-**7 constats** ont été formulés selon la structure : Critère → Observation → Preuve → Risque → Recommandation.
+Cette section présente les constats identifiés lors de l'audit, chacun étant étayé par des preuves concrètes et une analyse des risques associée. Les recommandations détaillées sont présentées dans la section suivante.
 
-### 5.1 Constat C-001 : Absence de MFA obligatoire pour tous les comptes Microsoft 365
+*(Se référer au document `06_fiches_constats.md` pour le détail complet de chaque constat, incluant les critères de référence, les observations, les preuves, les risques identifiés et les recommandations.)*
 
-**Criticité : Élevée** | **Priorité : P1**
+**Synthèse des constats** :
 
-**Résumé** : Seulement 40% des comptes utilisateurs ont activé la MFA. Aucune politique de Conditional Access n'impose la MFA de manière obligatoire.
-
-**Recommandation** : Implémenter une politique de Conditional Access imposant la MFA obligatoire pour 100% des comptes.
-
-**Échéance** : 31 janvier 2026 | **Coût** : 0€
-
-*Détails complets dans `06_fiches_constats.md` (section C-001)*
-
-### 5.2 Constat C-002 : Stratégie de sauvegarde incomplète et absence de test de restauration récent
-
-**Criticité : Très élevée** | **Priorité : P1**
-
-**Résumé** : Dernier test de restauration remonte à 8 mois. Pas de sauvegarde dédiée MedSimple. RTO/RPO non documentés. Chiffrement offsite non vérifié.
-
-**Recommandation** : Compléter stratégie 3-2-1, formaliser tests restauration trimestriels, documenter RTO/RPO.
-
-**Échéance** : 28 février 2026 | **Coût** : 500€/an (si export MedSimple payant)
-
-*Détails complets dans `06_fiches_constats.md` (section C-002)*
-
-### 5.3 Constat C-003 : Retard dans l'application des correctifs de sécurité
-
-**Criticité : Élevée** | **Priorité : P1**
-
-**Résumé** : Retards de 10 à 22 jours sur les correctifs critiques Windows. Aucune politique formelle de gestion des correctifs. Mises à jour "à la demande" non automatisées.
-
-**Recommandation** : Mettre en place politique de correctifs avec application automatique (7 jours pour critiques).
-
-**Échéance** : 15 février 2026 | **Coût** : 0€
-
-*Détails complets dans `06_fiches_constats.md` (section C-003)*
-
-### 5.4 Constat C-004 : Isolation insuffisante du réseau Wi‑Fi invité
-
-**Criticité : Moyenne** | **Priorité : P2**
-
-**Résumé** : WPS activé (risque). Règles pare-feu permettent accès partiel invité → interne. Pas de limitation bande passante. Pas de portail captif.
-
-**Recommandation** : Désactiver WPS, bloquer trafic invité → interne, limiter bande passante.
-
-**Échéance** : 31 janvier 2026 | **Coût** : 0€
-
-*Détails complets dans `06_fiches_constats.md` (section C-004)*
-
-### 5.5 Constat C-005 : Procédure de gestion des incidents incomplète
-
-**Criticité : Très élevée** | **Priorité : P1**
-
-**Résumé** : Procédure manque détails (RACI, délais CNIL, communication). Exercice table-top révèle confusion délai CNIL (72h), pas de kit de crise, décision communication non préparée.
-
-**Recommandation** : Compléter procédure (RACI, délais), créer kit de crise, planifier exercices trimestriels.
-
-**Échéance** : 15 février 2026 | **Coût** : 0€
-
-*Détails complets dans `06_fiches_constats.md` (section C-005)*
-
-### 5.6 Constat C-006 : Clauses RGPD incomplètes dans les contrats
-
-**Criticité : Moyenne** | **Priorité : P2**
-
-**Résumé** : DPA prestataire IT manque clauses (notification incidents, sous-traitants ultérieurs, audit). Pas de registre sous-traitants.
-
-**Recommandation** : Compléter DPA, créer registre sous-traitants, réviser annuellement.
-
-**Échéance** : 28 février 2026 | **Coût** : 0€ à 500€ (si consultation juridique)
-
-*Détails complets dans `06_fiches_constats.md` (section C-006)*
-
-### 5.7 Constat C-007 : Absence de politique de verrouillage automatique des sessions
-
-**Criticité : Moyenne** | **Priorité : P2**
-
-**Résumé** : Verrouillage 10-30 minutes ou absent selon postes. Pas de politique centralisée. Pas de sensibilisation.
-
-**Recommandation** : Implémenter verrouillage 5 min max, sensibiliser personnel, monitorer conformité.
-
-**Échéance** : 31 janvier 2026 | **Coût** : 0€
-
-*Détails complets dans `06_fiches_constats.md` (section C-007)*
+| ID | Constat | Criticité |
+|---|---|---|
+| C-001 | Absence de MFA obligatoire pour tous les comptes Microsoft 365 | Élevée |
+| C-002 | Stratégie de sauvegarde incomplète et absence de test de restauration récent | Très élevée |
+| C-003 | Retard dans l'application des correctifs de sécurité sur les postes de travail | Élevée |
+| C-004 | Isolation insuffisante du réseau Wi‑Fi invité et WPS activé | Moyenne |
+| C-005 | Procédure de gestion des incidents de sécurité incomplète et non testée régulièrement | Très élevée |
+| C-006 | Clauses RGPD incomplètes dans les contrats avec les sous-traitants | Moyenne |
+| C-007 | Absence de politique de verrouillage automatique des sessions sur les postes de travail | Moyenne |
 
 ---
 
 ## 6. Recommandations et plan d'actions
 
-### 6.1 Plan d'actions priorisé
+Les recommandations sont classées par priorité (P1 : Critique, P2 : Important, P3 : Mineur) et incluent des actions détaillées, les responsables, les échéances estimées et les coûts associés.
 
-| ID | Action | Responsable | Échéance | Coût | Priorité | Statut |
-|---|---|---|---|---|---|---|
-| **P-1** | Implémenter MFA obligatoire (100% comptes) | Prestataire IT | 31/01/2026 | 0€ | **P1** | À faire |
-| **P-2** | Compléter stratégie sauvegarde + tests trimestriels | Prestataire IT | 28/02/2026 | 500€/an | **P1** | À faire |
-| **P-3** | Mettre en place politique correctifs (7j critiques) | Prestataire IT | 15/02/2026 | 0€ | **P1** | À faire |
-| **P-4** | Renforcer isolation Wi‑Fi invité | Prestataire IT | 31/01/2026 | 0€ | **P2** | À faire |
-| **P-5** | Compléter procédure incidents + kit de crise | Direction | 15/02/2026 | 0€ | **P1** | À faire |
-| **P-6** | Compléter clauses RGPD (contrats) | Direction | 28/02/2026 | 0-500€ | **P2** | À faire |
-| **P-7** | Implémenter politique verrouillage session (5 min) | Prestataire IT | 31/01/2026 | 0€ | **P2** | À faire |
+*(Se référer au document `06_fiches_constats.md` pour le détail complet des recommandations associées à chaque constat.)*
 
-### 6.2 Planning de mise en œuvre
+**Plan d'actions priorisé** :
 
-**Janvier 2026** :
-- **Semaine 1-2** : P-1 (MFA), P-4 (Wi‑Fi), P-7 (Verrouillage)
+| ID | Recommandation | Priorité | Échéance | Responsable | Coût estimé |
+|---|---|---|---|---|---|
+| **P-1** | Implémenter MFA obligatoire pour 100% des comptes M365 | P1 | 31/01/2026 | Prestataire IT / Direction | 0€ |
+| **P-2** | Compléter stratégie sauvegarde (3-2-1) et tests trimestriels | P1 | 28/02/2026 | Prestataire IT / Direction | 500€/an |
+| **P-3** | Mettre en place gestion centralisée des correctifs (patch management) | P1 | 15/02/2026 | Prestataire IT / Direction | 0-500€/an |
+| **P-4** | Renforcer isolation Wi‑Fi invité et désactiver WPS | P2 | 31/01/2026 | Prestataire IT / Direction | 0€ |
+| **P-5** | Élaborer procédure gestion incidents complète et exercices réguliers | P1 | 15/02/2026 | Direction / Prestataire IT | 0-200€ |
+| **P-6** | Mettre à jour clauses RGPD (Art. 28) dans contrats sous-traitants | P2 | 28/02/2026 | Direction / Juridique | 0-500€ |
+| **P-7** | Implémenter politique verrouillage automatique sessions (5 min) | P2 | 31/01/2026 | Prestataire IT / Direction | 0€ |
 
-**Février 2026** :
-- **Semaine 1-2** : P-3 (Correctifs), P-5 (Incidents)
-- **Semaine 3-4** : P-2 (Sauvegardes), P-6 (RGPD)
+Le planning de mise en œuvre prévoit que les actions P-1, P-4 et P-7 soient traitées en janvier 2026, les actions P-3 et P-5 en février 2026, et les actions P-2 et P-6 en fin février 2026. Un suivi est prévu en mars 2026 pour vérifier la mise en œuvre, réaliser les premiers tests de restauration et organiser un exercice d'incident.
 
-**Mars 2026** :
-- **Suivi** : Vérification mise en œuvre, tests restauration (P-2), exercice incident (P-5)
-
-### 6.3 Indicateurs de suivi
-
-- **Taux MFA activée** : Objectif 100% (P-1)
-- **Tests restauration** : 4/an (trimestriel) (P-2)
-- **Délai correctifs critiques** : ≤ 7 jours (P-3)
-- **Exercices incidents** : 4/an (trimestriel) (P-5)
-- **Conformité verrouillage** : 100% postes ≤ 5 min (P-7)
-
-### 6.4 Coûts estimés
-
-- **Configuration/rédaction interne** : 0€ (P-1, P-3, P-4, P-5, P-7)
-- **Export MedSimple** : 500€/an (P-2)
-- **Consultation juridique** : 0€ à 500€ (P-6, optionnel)
-
-**Total** : **0€ à 1000€** (principalement rédaction et configuration)
+Le coût total estimé pour la mise en œuvre de toutes ces recommandations s'élève à **0€ à 1000€**, principalement pour la configuration et la rédaction interne. La majorité des actions ne nécessitent pas d'investissement financier significatif, ce qui rend ce plan d'actions particulièrement adapté à une structure de petite taille comme la Clinique Santé Plus.
 
 ---
 
 ## 7. Conclusion
 
-### 7.1 Bilan global
+Cet audit a mis en lumière des points forts dans la gestion de la sécurité de la Clinique Santé Plus, notamment la prise de conscience des enjeux SSI et la collaboration avec un prestataire IT. Cependant, des axes d'amélioration significatifs ont été identifiés, nécessitant une attention particulière et une mise en œuvre rapide des recommandations.
 
-L'audit a révélé un **niveau de sécurité global acceptable** pour une organisation de petite taille, avec des **points positifs** (MFA admins, sauvegardes partielles, EDR déployé) mais également **7 constats** nécessitant une attention prioritaire.
+La priorisation des actions proposées vise à adresser en premier lieu les risques les plus critiques pour la clinique, en se concentrant sur des mesures à fort impact et à coût maîtrisé. La Direction est encouragée à s'approprier ce plan d'actions et à en assurer le suivi régulier.
 
-**Les risques les plus critiques** concernent :
-1. La **gestion des sauvegardes** (tests non réguliers)
-2. La **gestion des incidents** (procédure incomplète)
-3. L'**authentification** (MFA non obligatoire)
-4. La **gestion des correctifs** (retards)
-
-### 7.2 Recommandations prioritaires
-
-**4 actions critiques (P1)** doivent être traitées avant le **28 février 2026** :
-- Implémenter MFA obligatoire (P-1)
-- Compléter stratégie sauvegarde + tests (P-2)
-- Mettre en place politique correctifs (P-3)
-- Compléter procédure incidents + kit de crise (P-5)
-
-**3 actions importantes (P2)** peuvent être traitées en parallèle :
-- Renforcer isolation Wi‑Fi invité (P-4)
-- Compléter clauses RGPD (P-6)
-- Implémenter politique verrouillage (P-7)
-
-### 7.3 Perspectives
-
-Après mise en œuvre des recommandations, la clinique disposera d'un **niveau de sécurité renforcé**, aligné sur les bonnes pratiques ISO/IEC 27001/27002, ANSSI, et RGPD, adapté à sa taille et à ses moyens.
-
-**Prochaines étapes recommandées** :
-- **Audit de suivi** : 6 mois après mise en œuvre (vérification actions)
-- **Amélioration continue** : Révision annuelle des politiques, exercices trimestriels, veille réglementaire
+Un renforcement de la posture de sécurité permettra à la Clinique Santé Plus de mieux protéger les données de santé de ses patients, de garantir la continuité de ses services et de se conformer pleinement aux exigences réglementaires, renforçant ainsi la confiance de ses patients et partenaires.
 
 ---
 
@@ -386,6 +173,7 @@ Après mise en œuvre des recommandations, la clinique disposera d'un **niveau d
 - **05_registre_preuves.csv** : Registre de preuves (30 preuves)
 - **06_fiches_constats.md** : Fiches constats détaillées (7 constats)
 - **10_acces_outils_simules_et_verifications_techniques.md** : Vérifications techniques (14 vérifications)
+- **11_methodes_collecte_preuves.md** : Méthodes de collecte des preuves
 
 ### 8.2 Glossaire
 
@@ -410,5 +198,4 @@ Après mise en œuvre des recommandations, la clinique disposera d'un **niveau d
 **Fin du rapport**
 
 *Document préparé par l'Équipe Audit SSI — Efrei Paris*  
-*Date de finalisation : 5 janvier 2026*  
-
+*Date de finalisation : 5 janvier 2026*

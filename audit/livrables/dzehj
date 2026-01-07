@@ -1,0 +1,188 @@
+# Discours Présentation Orale — Audit SSI Clinique Santé Plus
+
+**Durée estimée : 15-20 minutes**  
+**Équipe Audit SSI — Efrei Paris**
+
+---
+
+## Partie 1 : Introduction et Contexte (2-3 minutes)
+
+Bonjour à tous. Je suis [votre nom], et je représente l'équipe d'audit SSI de l'Efrei Paris. Nous avons le plaisir de vous présenter aujourd'hui les résultats de l'audit de sécurité des systèmes d'information que nous avons réalisé pour la Clinique Santé Plus.
+
+Cette mission s'est déroulée sur une période de quatre semaines, du 1er décembre 2025 au 5 janvier 2026. L'objectif principal de cet audit était d'évaluer le niveau de sécurité de votre système d'information, d'identifier les risques majeurs auxquels vous êtes exposés, et de vous proposer des recommandations concrètes et adaptées à la taille et aux moyens de votre établissement.
+
+La Clinique Santé Plus est une clinique médicale de petite taille, avec environ quinze employés, qui assure des soins médicaux généraux et des analyses biologiques. Vous manipulez quotidiennement des données de santé sensibles, soumises au RGPD et aux exigences d'hébergement de données de santé, ce qui rend cette évaluation particulièrement importante.
+
+Le contexte actuel est marqué par une recrudescence des cyberattaques ciblant spécifiquement le secteur de la santé. Les ransomwares, les fuites de données et les compromissions de comptes sont des menaces réelles et fréquentes. C'est dans ce contexte que nous avons mené notre audit, en nous appuyant sur les référentiels ISO 27001 et 27002, le RGPD, et les guides de l'ANSSI.
+
+Avant de vous présenter nos constats et recommandations, permettez-moi de vous expliquer rapidement la méthodologie que nous avons utilisée.
+
+---
+
+## Partie 2 : Méthodologie (2 minutes)
+
+Notre approche a été volontairement non intrusive et factuelle. Nous n'avons réalisé aucun test d'intrusion, aucune exploitation de vulnérabilités, ni aucune action qui pourrait perturber votre activité. Tous nos constats sont basés sur des preuves tangibles et vérifiables.
+
+Pour collecter les informations nécessaires, nous avons utilisé plusieurs techniques complémentaires. D'abord, la revue documentaire, qui nous a permis d'examiner vos politiques de sécurité, vos procédures internes, vos contrats avec les prestataires, et vos attestations HDS. Ensuite, nous avons mené des entretiens avec la Direction, le référent SI, le prestataire IT externe, et des utilisateurs métiers pour comprendre vos processus et vos pratiques réelles.
+
+Nous avons également réalisé des observations techniques non intrusives. Cela signifie que nous avons vérifié les configurations sur vos postes de travail, votre réseau, et les consoles d'administration en mode lecture seule uniquement. Nous avons exporté des rapports depuis Microsoft 365, MedSimple, votre solution EDR, et vos systèmes de sauvegarde, toutes les données ayant été anonymisées pour garantir la confidentialité.
+
+Enfin, nous avons organisé un exercice table-top, simulant un scénario de crise type ransomware avec les équipes clés, pour évaluer la réactivité et la pertinence de vos procédures existantes.
+
+Au total, nous avons collecté trente preuves, toutes référencées dans notre registre de preuves. Ces preuves se répartissent entre des documents, des exports de données, des captures d'écran, et des observations directes.
+
+---
+
+## Partie 3 : Résultats Principaux — Les Constats (5-6 minutes)
+
+Je vais maintenant vous présenter les principaux constats que nous avons identifiés. Nous avons relevé sept constats majeurs, dont quatre sont classés comme critiques et trois comme importants.
+
+### Constat C-001 : Absence de MFA obligatoire
+
+Le premier constat, et l'un des plus critiques, concerne l'authentification multifacteur, ou MFA. Lors de notre revue des comptes Microsoft 365, nous avons constaté que seulement 40% des comptes utilisateurs, soit 6 comptes sur 15, ont activé la MFA. Si les comptes administrateurs ont tous la MFA activée, ce qui est une bonne pratique, aucune politique de Conditional Access n'impose la MFA de manière obligatoire pour l'ensemble des comptes.
+
+Le risque associé est la compromission de comptes utilisateurs par phishing ou vol de mots de passe. Imaginez un scénario où un attaquant obtient les identifiants d'un utilisateur via un email de phishing. Sans MFA, l'accès au compte est immédiat, permettant l'exfiltration de données patients ou l'accès à votre application MedSimple. L'impact serait élevé, avec une fuite de données de santé et des sanctions réglementaires potentielles.
+
+### Constat C-002 : Stratégie de sauvegarde incomplète
+
+Le deuxième constat critique concerne votre stratégie de sauvegarde. Nous avons constaté que les sauvegardes quotidiennes des documents SharePoint et OneDrive sont bien en place, ainsi que les sauvegardes hebdomadaires vers votre NAS local. Une copie hors site existe également, mais le chiffrement n'a pas pu être vérifié dans le contrat fourni.
+
+Le point le plus préoccupant est que le dernier test de restauration remonte à 8 mois, en avril 2025. Par ailleurs, il n'existe pas de sauvegarde dédiée de la base MedSimple, qui repose uniquement sur les sauvegardes de l'éditeur. Enfin, vos objectifs RTO et RPO ne sont pas documentés formellement.
+
+Le risque associé est la perte définitive de données critiques. Si un ransomware chiffre vos postes et votre NAS local, et que la restauration depuis la copie hors site échoue car elle n'a pas été testée récemment, vous pourriez perdre définitivement vos données. L'impact serait très élevé, incluant la perte de dossiers patients, l'interruption des soins, et potentiellement l'arrêt d'activité.
+
+### Constat C-003 : Retard dans les correctifs de sécurité
+
+Le troisième constat concerne la gestion des correctifs de sécurité. Nous avons observé que plusieurs postes de travail présentent un retard de 15 jours dans l'application des mises à jour Windows. Il n'existe pas de gestion centralisée des correctifs, chaque poste étant mis à jour manuellement ou de manière automatique mais non contrôlée.
+
+Le risque associé est l'exploitation de vulnérabilités connues. Des attaquants peuvent exploiter des failles non corrigées pour installer des malwares ou prendre le contrôle des postes. L'impact serait élevé, avec une compromission potentielle de vos systèmes et de vos données.
+
+### Constat C-004 : Isolation insuffisante du Wi‑Fi invité
+
+Le quatrième constat concerne votre réseau Wi‑Fi invité. Nous avons constaté que le réseau invité n'est pas suffisamment isolé du réseau interne, et que le WPS, une fonctionnalité connue pour être vulnérable, est activé sur le réseau invité.
+
+Le risque associé est un accès non autorisé au réseau interne. Un attaquant connecté au Wi‑Fi invité pourrait potentiellement accéder à des ressources internes. L'impact serait moyen, mais la probabilité est réelle.
+
+### Constat C-005 : Procédure de gestion des incidents incomplète
+
+Le cinquième constat, et l'un des plus critiques, concerne votre procédure de gestion des incidents de sécurité. Nous avons constaté que la procédure existante est incomplète. Elle ne définit pas clairement les délais de notification à la CNIL en cas de violation de données, ni les rôles et responsabilités détaillés de chaque acteur. L'exercice table-top que nous avons organisé a révélé des lacunes importantes dans la réactivité et la coordination des équipes.
+
+Le risque associé est l'incapacité à gérer efficacement un incident majeur. Si un ransomware chiffre vos systèmes, vous ne saurez peut-être pas qui contacter en priorité, vous ne respecterez pas le délai de notification à la CNIL de 72 heures, et vous communiquerez mal aux patients. L'impact serait très élevé, avec violation du RGPD, sanctions potentielles de la CNIL, et interruption prolongée de l'activité.
+
+### Constat C-006 : Clauses RGPD incomplètes dans les contrats
+
+Le sixième constat concerne la conformité RGPD dans vos contrats avec les sous-traitants. Nous avons constaté que certains contrats ne contiennent pas toutes les clauses obligatoires prévues par l'article 28 du RGPD, notamment concernant les obligations de sécurité et les sous-traitants ultérieurs.
+
+Le risque associé est une non-conformité RGPD, avec des sanctions potentielles. L'impact serait moyen, mais la probabilité est faible si vous agissez rapidement.
+
+### Constat C-007 : Absence de verrouillage automatique des sessions
+
+Le septième et dernier constat concerne le verrouillage automatique des sessions sur les postes de travail. Nous avons constaté que les paramètres de verrouillage varient entre 10 et 30 minutes selon les postes, et qu'il n'existe pas de politique centralisée imposant un verrouillage automatique après 5 minutes d'inactivité.
+
+Le risque associé est un accès non autorisé aux postes laissés sans surveillance. L'impact serait moyen, mais la probabilité est faible si les locaux sont sécurisés.
+
+---
+
+## Partie 4 : Analyse des Risques (2-3 minutes)
+
+Pour prioriser nos recommandations, nous avons réalisé une analyse des risques en utilisant une matrice de criticité standard, qui combine l'impact et la probabilité de chaque risque.
+
+Les risques les plus critiques identifiés sont au nombre de trois. D'abord, la perte définitive de données critiques, avec un impact très élevé et une probabilité moyenne, ce qui donne une criticité très élevée. Ensuite, l'incapacité à gérer efficacement un incident majeur, également avec une criticité très élevée. Enfin, la compromission des comptes utilisateurs et l'exploitation de vulnérabilités connues, avec une criticité élevée.
+
+Les autres risques identifiés ont une criticité moyenne, mais ils méritent tout de même une attention particulière.
+
+Cette analyse des risques nous a permis de prioriser nos recommandations en trois niveaux : P1 pour les actions critiques, P2 pour les actions importantes, et P3 pour les actions mineures. Dans votre cas, nous avons identifié 4 recommandations P1 et 3 recommandations P2.
+
+---
+
+## Partie 5 : Recommandations et Plan d'Actions (4-5 minutes)
+
+Je vais maintenant vous présenter nos recommandations et le plan d'actions que nous proposons. Chaque recommandation correspond à un constat et propose des actions concrètes, avec des responsabilités claires et des échéances réalistes.
+
+### Recommandation P-1 : Implémenter MFA obligatoire
+
+La première recommandation, classée P1 critique, consiste à implémenter une politique de Conditional Access Microsoft 365 imposant la MFA obligatoire pour 100% des comptes. Cette action est sous la responsabilité de votre prestataire IT, avec validation de la Direction. L'échéance recommandée est le 31 janvier 2026, soit dans trois semaines. Le coût est de 0€ car cette fonctionnalité est incluse dans Microsoft 365.
+
+Pour mettre en œuvre cette recommandation, il faut créer la politique Conditional Access, communiquer aux utilisateurs sur l'activation de la MFA, activer progressivement par groupe en commençant par la direction, et monitorer les échecs d'authentification.
+
+### Recommandation P-2 : Compléter stratégie sauvegarde
+
+La deuxième recommandation, également P1 critique, consiste à compléter votre stratégie de sauvegarde selon le principe 3-2-1, c'est-à-dire 3 copies des données, sur 2 supports différents, dont 1 hors site. Il faut également mettre en place des tests de restauration trimestriels, vérifier le chiffrement de la copie hors site, et ajouter un export dédié de MedSimple.
+
+Cette action est sous la responsabilité de votre prestataire IT, avec validation de la Direction. L'échéance recommandée est le 28 février 2026. Le coût estimé est de 500€ par an, principalement pour la configuration et les tests.
+
+### Recommandation P-3 : Mettre en place gestion centralisée des correctifs
+
+La troisième recommandation, P1 critique, consiste à mettre en place une gestion centralisée des correctifs de sécurité. Cela peut se faire via Microsoft Intune, qui est inclus dans certaines licences Microsoft 365, ou via une solution tierce. L'objectif est de s'assurer que tous les postes reçoivent les mises à jour critiques dans un délai de 7 jours maximum.
+
+Cette action est sous la responsabilité de votre prestataire IT, avec validation de la Direction. L'échéance recommandée est le 15 février 2026. Le coût estimé est de 0€ à 500€ par an selon la solution choisie.
+
+### Recommandation P-4 : Renforcer isolation Wi‑Fi invité
+
+La quatrième recommandation, classée P2 importante, consiste à renforcer l'isolation du réseau Wi‑Fi invité et à désactiver le WPS. Cette action est sous la responsabilité de votre prestataire IT, avec validation de la Direction. L'échéance recommandée est le 31 janvier 2026. Le coût est de 0€.
+
+### Recommandation P-5 : Élaborer procédure gestion incidents complète
+
+La cinquième recommandation, P1 critique, consiste à élaborer une procédure de gestion des incidents complète, avec des délais clairs, un RACI détaillé, et un kit de crise. Il faut également organiser des exercices trimestriels pour tester cette procédure.
+
+Cette action est sous la responsabilité de la Direction, avec support du prestataire IT. L'échéance recommandée est le 15 février 2026. Le coût estimé est de 0€ à 200€, principalement pour la rédaction et les exercices.
+
+### Recommandation P-6 : Mettre à jour clauses RGPD
+
+La sixième recommandation, P2 importante, consiste à mettre à jour les clauses RGPD dans vos contrats avec les sous-traitants, en s'assurant que tous les éléments de l'article 28 du RGPD sont présents. Cette action est sous la responsabilité de la Direction, avec support juridique si nécessaire. L'échéance recommandée est le 28 février 2026. Le coût estimé est de 0€ à 500€ selon si vous faites appel à un juriste externe.
+
+### Recommandation P-7 : Implémenter politique verrouillage automatique
+
+La septième et dernière recommandation, P2 importante, consiste à implémenter une politique de verrouillage automatique des sessions après 5 minutes d'inactivité sur tous les postes. Cette action est sous la responsabilité de votre prestataire IT, avec validation de la Direction. L'échéance recommandée est le 31 janvier 2026. Le coût est de 0€.
+
+### Planning de mise en œuvre
+
+Le planning de mise en œuvre prévoit que les actions P-1, P-4 et P-7 soient traitées en janvier 2026, les actions P-3 et P-5 en février 2026, et les actions P-2 et P-6 en fin février 2026. Un suivi est prévu en mars 2026 pour vérifier la mise en œuvre, réaliser les premiers tests de restauration et organiser un exercice d'incident.
+
+Le coût total estimé pour la mise en œuvre de toutes ces recommandations s'élève à 0€ à 1000€, principalement pour la configuration et la rédaction interne. La majorité des actions ne nécessitent pas d'investissement financier significatif, ce qui rend ce plan d'actions particulièrement adapté à une structure de petite taille comme la vôtre.
+
+---
+
+## Partie 6 : Conclusion (1-2 minutes)
+
+Pour conclure, cet audit a mis en lumière des points forts dans votre gestion de la sécurité, notamment votre prise de conscience des enjeux SSI et votre collaboration avec un prestataire IT. Cependant, des axes d'amélioration significatifs ont été identifiés, nécessitant une attention particulière et une mise en œuvre rapide des recommandations.
+
+La priorisation des actions proposées vise à adresser en premier lieu les risques les plus critiques pour votre clinique, en se concentrant sur des mesures à fort impact et à coût maîtrisé. Nous vous encourageons à vous approprier ce plan d'actions et à en assurer le suivi régulier.
+
+Un renforcement de votre posture de sécurité vous permettra de mieux protéger les données de santé de vos patients, de garantir la continuité de vos services et de vous conformer pleinement aux exigences réglementaires, renforçant ainsi la confiance de vos patients et partenaires.
+
+Nous restons à votre disposition pour toute question ou clarification. Le rapport complet, ainsi que tous les livrables détaillés, sont à votre disposition. Nous vous remercions pour votre collaboration et votre transparence tout au long de cette mission.
+
+Merci de votre attention.
+
+---
+
+## Notes pour l'orateur
+
+### Conseils de présentation
+
+- **Temps de parole** : Respecter environ 15-20 minutes de présentation, puis prévoir 5-10 minutes de questions.
+- **Ton** : Adopter un ton professionnel mais accessible, éviter le jargon technique excessif.
+- **Transitions** : Utiliser des phrases de transition naturelles entre chaque partie.
+- **Interactions** : Regarder l'audience, faire des pauses, inviter aux questions à la fin de chaque partie si nécessaire.
+- **Supports visuels** : Si vous utilisez un PowerPoint, limiter le texte sur les slides, privilégier les visuels et les graphiques.
+
+### Points à souligner
+
+- L'approche non intrusive et factuelle de l'audit.
+- Le nombre de preuves collectées (30 preuves).
+- Les 4 recommandations critiques (P1) à traiter en priorité.
+- Le coût maîtrisé du plan d'actions (0€ à 1000€).
+- L'adaptation des recommandations à une structure de petite taille.
+
+### Questions potentielles à anticiper
+
+- **"Pourquoi la MFA n'est-elle pas déjà obligatoire ?"** : Répondre que c'est une bonne pratique qui n'est pas toujours appliquée par défaut, et que cela nécessite une configuration spécifique.
+- **"Les tests de restauration sont-ils vraiment nécessaires ?"** : Répondre que oui, car une sauvegarde non testée n'est pas fiable, et que de nombreux incidents surviennent lors de la restauration.
+- **"Pourquoi le coût est-il si faible ?"** : Répondre que la majorité des actions sont des configurations et de la documentation, qui ne nécessitent pas d'investissement matériel important.
+- **"Quel est le délai minimum pour mettre en œuvre les actions P1 ?"** : Répondre que les actions P1 peuvent être mises en œuvre en 1 à 2 mois, avec un suivi régulier.
+
+---
+
+*Document préparé par l'Équipe Audit SSI — Efrei Paris*  
+*Date : 5 janvier 2026*
